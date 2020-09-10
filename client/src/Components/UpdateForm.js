@@ -10,7 +10,7 @@ const initialMovie = {
   stars: "",
 };
 
-const UpdateForm = () => {
+const UpdateForm = (props) => {
   const { push } = useHistory();
   const [movie, setMovie] = useState(initialMovie);
   const { id } = useParams();
@@ -34,7 +34,7 @@ const UpdateForm = () => {
       .put(`http://localhost:5000/api/movies/${id}`, movie)
       .then((res) => {
         console.log(res);
-        // props.setMovieList(res)
+        props.setMovieList(res);
         // UNCOMMENT ABOVE FOR WEIRD MAP ISSUE. PAGE DOESN'T REFRESH ON ITS OWN.
         push("/");
       })
